@@ -1,0 +1,27 @@
+Results for the extraLargeArray
+insert 1.002278521 s
+append 4.373041 ms
+
+Results for the LargeArray
+insert 6.637904 ms
+append 677.618 μs
+
+Results for the mediumArray
+insert 182.855 μs
+append 181.525 μs
+
+Results for the smallArray
+insert 48.377 μs
+append 176.23 μs
+
+Results for the tinyArray
+insert 42.836 μs
+append 96.094 μs
+
+Insert ranges from 42.836 microseconds on a tiny array to 1.002278521 seconds on an extra large array.
+Append ranges from 96.094 microseconds on a tiny array to 4.373041 milli seconds on an extra large array.
+While insert is almost twice as fast with smaller data sets, it takes significantly longer on increasingly larger data sets.
+Even though append takes twice long on small data sets, the performance is almost even in medium data sets, it improves significantly with larger data sets, making it the more scalable approach.
+
+Append is the more scalable application because it uses push(), which takes the num at location i, multiplies it by two and adds the resulting value to the end of the array.
+Insert is the less scalable application because it uses unshift(), which takes the num at location i, multiplies it by two and adds the resulting value to the beginning of the array.  This is slower with larger data sets because it has to increment all of the indices of the previously existing values in the array, which subsequently requires a copy to be made and changes their storage address.
